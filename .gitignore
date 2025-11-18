@@ -1,0 +1,8 @@
+node_modules/
+output/
+package-lock.json
+service-account.json
+start.sh
+.env
+token.json
+venv
