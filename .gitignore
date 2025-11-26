@@ -6,3 +6,4 @@ start.sh
 .env
 token.json
 venv
+update-server-state.py

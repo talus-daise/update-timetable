@@ -1,10 +1,16 @@
-from flask import Flask, send_from_directory, abort, Response
+from flask import Flask, send_from_directory, abort
 from flask_cors import CORS
 import os
 import mimetypes
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app,
+     resources={r"/*": {"origins": "*"}},
+     allow_headers=["Content-Type",
+                    "authorization",
+                    "ngrok-skip-browser-warning",
+                    "bypass-tunnel-reminder"]
+)
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), 'output')
 
@@ -24,7 +30,6 @@ def serve_file(filename):
     if not os.path.exists(file_path):
         abort(404)
 
-    # MIMEタイプを明示
     mime_type, _ = mimetypes.guess_type(file_path)
     if mime_type is None:
         mime_type = "application/octet-stream"
