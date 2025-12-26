@@ -7,3 +7,4 @@ start.sh
 token.json
 venv
 update-server-state.py
+logs/
